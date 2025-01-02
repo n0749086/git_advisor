@@ -1,4 +1,9 @@
 from abc import ABCMeta, abstractmethod
+from enum import auto, StrEnum
+
+class Mode(StrEnum):
+	COMMIT = auto()
+	REVIEW = auto()
 
 def generate_commit_message():
     """generate commit message with LLM"""
@@ -35,7 +40,7 @@ class BaseClass():
 		pass
 
 	def run_model(self, mode, diff):
-		if mode == 'commit':
+		if mode == Mode.COMMIT:
 			role, prompt = generate_commit_message()
 		else:
 			role, prompt = generate_codereview()
