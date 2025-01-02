@@ -13,7 +13,7 @@ def parse_arguments():
 
 def get_git_diff():
     """output git diff HEAD"""
-    result = subprocess.run(['git', 'diff', 'HEAD~3'], stdout=subprocess.PIPE)
+    result = subprocess.run(['git', 'diff', 'HEAD'], stdout=subprocess.PIPE)
     return result.stdout.decode('utf-8')
 
 def main():
