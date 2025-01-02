@@ -1,10 +1,4 @@
-class BaseClass:
-	def __init__(self, API_KEY):
-		self.API_KEY = API_KEY
 
-	def __str__(self):
-		return f"<{type(self).__name__}(API_KEY={self.API_KEY})>"
-	
 def generate_commit_message():
     """generate commit message with LLM"""
     return (
@@ -27,8 +21,18 @@ def generate_codereview():
         "+ 回答がmax_tokensを超えてしまう場合は文字数が収まるように要約してください。"
         )
 
+
+class BaseClass():
+	def __init__(self, API_KEY):
+		self.API_KEY = API_KEY
+
+	def __str__(self):
+		return f"<{type(self).__name__}(API_KEY={self.API_KEY})>"
+
+
 class Class_ChatGPT(BaseClass):
 	pass
+
 
 class Class_Gemni(BaseClass):
 	pass
