@@ -47,6 +47,7 @@ class BaseClass():
 		prompt = prompt + f"#diff: {diff}"
 		return self.send_request(role, prompt)
 
+
 class Class_ChatGPT(BaseClass):
 	pass
 
@@ -61,10 +62,10 @@ class Class_Gemni(BaseClass):
 	def send_request(self, role, prompt):
 		response = self.model.generate_content(prompt)
 		return response.text
- 
+
 def create_instance(use_GPT, API_KEY):
- 	if use_GPT:
- 		instance = Class_ChatGPT(API_KEY)
- 	else:
- 		instance = Class_Gemni(API_KEY)
- 	return instance
+	if use_GPT:
+		instance = Class_ChatGPT(API_KEY)
+	else:
+		instance = Class_Gemni(API_KEY)
+	return instance
