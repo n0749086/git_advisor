@@ -27,8 +27,7 @@ def generate_codereview():
         "+ 回答がmax_tokensを超えてしまう場合は文字数が収まるように要約して"
         )
 
-
-class BaseClass():
+class BaseClass(metaclass=ABCMeta):
 	def __init__(self, API_KEY):
 		self.API_KEY = API_KEY
 
@@ -46,26 +45,3 @@ class BaseClass():
 			role, prompt = generate_codereview()
 		prompt = prompt + f"#diff: {diff}"
 		return self.send_request(role, prompt)
-
-
-class Class_ChatGPT(BaseClass):
-	pass
-
-
-class Class_Gemni(BaseClass):
-	def __init__(self, API_KEY):
-		super().__init__(API_KEY)
-		import google.generativeai as genai
-		genai.configure(api_key=self.API_KEY)
-		self.model = genai.GenerativeModel("gemini-1.5-flash")
-
-	def send_request(self, role, prompt):
-		response = self.model.generate_content(prompt)
-		return response.text
-
-def create_instance(use_GPT, API_KEY):
-	if use_GPT:
-		instance = Class_ChatGPT(API_KEY)
-	else:
-		instance = Class_Gemni(API_KEY)
-	return instance
