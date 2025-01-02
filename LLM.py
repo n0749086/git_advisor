@@ -1,3 +1,4 @@
+from abc import ABCMeta, abstractmethod
 
 def generate_commit_message():
     """generate commit message with LLM"""
@@ -29,13 +30,32 @@ class BaseClass():
 	def __str__(self):
 		return f"<{type(self).__name__}(API_KEY={self.API_KEY})>"
 
+	@abstractmethod
+	def send_request(self, role, prompt):
+		pass
+
+	def run_model(self, mode, diff):
+		if mode == 'commit':
+			role, prompt = generate_commit_message()
+		else:
+			role, prompt = generate_codereview()
+		prompt = prompt + f"#diff: {diff}"
+		return self.send_request(role, prompt)
 
 class Class_ChatGPT(BaseClass):
 	pass
 
 
 class Class_Gemni(BaseClass):
-	pass
+	def __init__(self, API_KEY):
+		super().__init__(API_KEY)
+		import google.generativeai as genai
+		genai.configure(api_key=self.API_KEY)
+		self.model = genai.GenerativeModel("gemini-1.5-flash")
+
+	def send_request(self, role, prompt):
+		response = self.model.generate_content(prompt)
+		return response.text
  
 def create_instance(use_GPT, API_KEY):
  	if use_GPT:

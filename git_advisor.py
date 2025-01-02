@@ -17,7 +17,10 @@ def get_git_diff():
     return result.stdout.decode('utf-8')
 
 def main():
-	print(create_instance(setting.USE_GPT, setting.API_KEY))
+	LLM = create_instance(setting.USE_GPT, setting.API_KEY)
+	args = parse_arguments()
+	mode = 'review' if args.review else 'commit'
+	print(LLM.run_model(mode, get_git_diff()))
 
 if __name__ == '__main__':
 	main()
