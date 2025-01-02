@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 import subprocess
 
 import setting
+from LLM import create_instance
 
 def parse_arguments():
     """Parse command-line args"""
@@ -19,7 +20,8 @@ def main():
 	print("API_KEY:", setting.API_KEY)
 	print("USE_GPT:", setting.USE_GPT)
 	print(parse_arguments())
-	print(get_git_diff())
+	#print(get_git_diff())
+	print(create_instance(setting.USE_GPT, setting.API_KEY))
 
 if __name__ == '__main__':
 	main()
