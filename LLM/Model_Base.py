@@ -32,11 +32,12 @@ def generate_codereview():
 
 class LLMClass(metaclass=ABCMeta):
     """Abstract class for LLM"""
-    def __init__(self, api_key):
+    def __init__(self, api_key, model):
         self.api_key = api_key
+        self.model = model
 
     def __str__(self):
-        return f"<{type(self).__name__}(API_KEY={self.api_key})>"
+        return f"<{type(self).__name__}(MODEL={self.model}, API_KEY={self.api_key})>"
 
     @abstractmethod
     def send_request(self, prompt):

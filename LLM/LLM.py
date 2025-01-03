@@ -1,10 +1,10 @@
 from .Model_ChatGPT import ClassChatGPT
 from .Model_Gemini import ClassGemini
 
-def create_instance(use_gpt, api_key):
+def create_instance(use_gpt, api_key, model=''):
     """factory method for LLM Class"""
     if use_gpt:
-        instance = ClassChatGPT(api_key)
+        instance = ClassChatGPT(api_key, model)
     else:
-        instance = ClassGemini(api_key)
+        instance = ClassGemini(api_key, model)
     return instance
