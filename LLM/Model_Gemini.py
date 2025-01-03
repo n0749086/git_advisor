@@ -4,10 +4,10 @@ from .Model_Base import LLMClass, generate_role
 
 class ClassGemini(LLMClass):
     """LLM class for Gemini"""
-    def __init__(self, api_key, model):
+    def __init__(self, api_key, model, endpoint=''):
         if model == '':
             model = 'gemini-1.5-flash'
-        super().__init__(api_key, model)
+        super().__init__(api_key, model, endpoint)
         genai.configure(api_key=self.api_key)
         role = generate_role()
         self.model = genai.GenerativeModel(self.model, system_instruction=role)
