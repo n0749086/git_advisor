@@ -14,9 +14,9 @@ def generate_role():
 def generate_commit_message():
     """generate commit message with LLM"""
     return "git commitメッセージをplaintext形式の日本語で作成して。"  \
-	    "メッセージは、要約、修正内容、修正によりどのように変わるのかを回答して。" \
-	    "要約は体現止め、修正内容は特に簡潔に回答して。" \
-	    "回答がmax_tokensを超えてしまう場合は文字数が収まるように要約してください。"
+        "メッセージは、要約、修正内容、修正によりどのように変わるのかを回答して。" \
+        "要約は体現止め、修正内容は特に簡潔に回答して。" \
+        "回答がmax_tokensを超えてしまう場合は文字数が収まるように要約してください。"
 
 def generate_codereview():
     """code review wdith LLM"""
