@@ -1,5 +1,5 @@
 """ChatGPT Module"""
-from .Model_Base import LLMClass
+from .Model_Base import LLMClass, generate_role
 
 from openai import AzureOpenAI
 
@@ -16,4 +16,10 @@ class ClassChatGPT(LLMClass):
         )
 
     def send_request(self, prompt):
-        pass
+        self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": generate_role()},
+                {"role": "user", "content": prompt}
+            ]
+        )
