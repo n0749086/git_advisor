@@ -1,5 +1,7 @@
-from .Model_Base import BaseClass
+"""ChatGPT Module"""
+from .Model_Base import LLMClass
 
-class Class_ChatGPT(BaseClass):
-	def send_request(self, role, prompt):
-		pass
+class ClassChatGPT(LLMClass):
+    """LLM class for ChatGPT"""
+    def send_request(self, role, prompt):
+        pass

@@ -1,3 +1,4 @@
+'''main script for git advisor'''
 from argparse import ArgumentParser
 import subprocess
 
@@ -17,9 +18,9 @@ def get_git_diff():
 
 def main():
     """main function"""
-    LLM = create_instance(setting.USE_GPT, setting.API_KEY)
+    LLM = create_instance(setting.use_gpt, setting.api_key)
     args = parse_arguments()
     print(LLM.run_model(args.mode, get_git_diff()))
 
 if __name__ == '__main__':
-	main()
+    main()

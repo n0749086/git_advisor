@@ -1,12 +1,14 @@
-from .Model_Base import BaseClass
+import google.generativeai as genai
 
-class Class_Gemni(BaseClass):
-	def __init__(self, API_KEY):
-		super().__init__(API_KEY)
-		import google.generativeai as genai
-		genai.configure(api_key=self.API_KEY)
-		self.model = genai.GenerativeModel("gemini-1.5-flash")
+from .Model_Base import LLMClass
 
-	def send_request(self, role, prompt):
-		response = self.model.generate_content(prompt)
-		return response.text
+class ClassGemini(LLMClass):
+    """LLM class for Gemini"""
+    def __init__(self, api_key):
+        super().__init__(api_key)
+        genai.configure(api_key=self.api_key)
+        self.model = genai.GenerativeModel("gemini-1.5-flash")
+
+    def send_request(self, role, prompt):
+        response = self.model.generate_content(prompt)
+        return response.text
