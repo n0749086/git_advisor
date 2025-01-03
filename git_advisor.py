@@ -18,7 +18,7 @@ def get_git_diff():
 
 def main():
     """main function"""
-    LLM = create_instance(setting.use_gpt, setting.api_key)
+    LLM = create_instance(setting.use_gpt, setting.api_key, endpoint=setting.endpoint)
     args = parse_arguments()
     print(LLM.run_model(args.mode, get_git_diff()))
 

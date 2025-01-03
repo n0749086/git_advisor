@@ -16,10 +16,12 @@
 以下の２項目について記載して下さい。
 - LLM: 使用するLLM(GPTもしくはGemni)
 - API_KEY: LLMのAPIキー
+- ENDPOINT: APIのエンドポイント(**AzureOPenAIのみ**)
 
 ```
 LLM=GPT
 API_KEY=test
+ENDPOINT=hogehoge
 ```
 
 ## 使い方
